@@ -1,6 +1,6 @@
 # Tactical Football Event Classifier 
 
-
+**Video Link**: https://youtu.be/1tyLGK8KrvA 
 ## Project Overview
  This project is an end-to-end Machine Learning Operations (MLOps) pipeline designed to automate the tagging and classification of tactical football events from static imagery. 
 
