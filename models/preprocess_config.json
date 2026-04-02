@@ -1,0 +1,1 @@
+{"image_size": [224, 224], "normalization": "1/255", "class_names": ["Corner", "Free kick", "Gattempt", "Yellow card"], "base_architecture": "MobileNetV2"}
