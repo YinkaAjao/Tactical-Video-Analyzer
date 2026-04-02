@@ -1,6 +1,6 @@
 # Tactical Football Event Classifier 
 
-**Video Link**: https://youtu.be/1tyLGK8KrvA 
+**Video Link**: https://youtu.be/BYcMa0hZVlk 
 **Streamlit UI**: https://bug-free-capybara-4jqjqgx69gpjf7vrr-8501.app.github.dev/ 
 
 ## Project Overview
