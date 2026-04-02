@@ -51,7 +51,6 @@ This project is deployed using a microservices architecture, heavily optimized f
 This application is fully containerized and designed to run effortlessly in **GitHub Codespaces** or any local Docker Desktop environment.
 
 ### Step 1: Clone the Repository
-```bash
 git clone https://github.com/YinkaAjao/Tactical-Video-Analyzer.git 
 cd Tactical-Video-Analyzer
 
