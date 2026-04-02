@@ -40,7 +40,7 @@ if page == "Tactical Prediction":
         uploaded_file = st.file_uploader("Upload Match Image...", type=['jpg', 'jpeg', 'png'])
         if uploaded_file is not None:
             image = Image.open(uploaded_file)
-            st.image(image, caption="Uploaded Frame", use_container_width=True)
+            st.image(image, caption="Uploaded Frame", use_column_width=True)
             
             if st.button("🔍 Analyze Tactics", type="primary"):
                 with st.spinner("Analyzing spatial features..."):

@@ -7,8 +7,8 @@ def retrain_model():
     """Fine-tunes the deployed model on newly ingested match footage."""
     print("Initiating automated MLOps retraining sequence...")
     
-    model_path = '../models/final_model.h5'
-    new_data_dir = "../data/new_training_data/"
+    model_path = 'models/final_model.h5'
+    new_data_dir = "data/new_training_data/"
     
     # Check if there is new data
     if not os.path.exists(new_data_dir) or len(os.listdir(new_data_dir)) == 0:

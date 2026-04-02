@@ -16,15 +16,23 @@ import asyncio
 from typing import List
 import time
 
+# --- THE MONKEY PATCH ---
+class SafeDense(tf.keras.layers.Dense):
+    @classmethod
+    def from_config(cls, config):
+        config.pop('quantization_config', None)
+        return super().from_config(config)
+# ------------------------
+
 app = FastAPI(title="Image Classification API", version="1.0.0")
 
 # Global variables for model and config
 model = None
 class_names = None
 preprocess_config = None
-MODEL_PATH = "../models/final_model.h5"
-CLASS_NAMES_PATH = "../models/class_names.pkl"
-CONFIG_PATH = "../models/preprocess_config.json"
+MODEL_PATH = "models/final_model.h5"
+CLASS_NAMES_PATH = "models/class_names.pkl"
+CONFIG_PATH = "models/preprocess_config.json"
 
 # Model uptime tracking
 start_time = time.time()
@@ -33,7 +41,8 @@ start_time = time.time()
 async def load_model():
     global model, class_names, preprocess_config
     try:
-        model = tf.keras.models.load_model(MODEL_PATH)
+        # --- APPLIED THE PATCH HERE ---
+        model = tf.keras.models.load_model(MODEL_PATH, custom_objects={'Dense': SafeDense})
         with open(CLASS_NAMES_PATH, 'rb') as f:
             class_names = pickle.load(f)
         with open(CONFIG_PATH, 'r') as f:
@@ -112,7 +121,7 @@ async def predict(file: UploadFile = File(...)):
 async def upload_bulk_data(files: List[UploadFile] = File(...)):
     """Upload multiple images for retraining"""
     try:
-        upload_dir = "../data/new_training_data/"
+        upload_dir = "data/new_training_data/"
         Path(upload_dir).mkdir(parents=True, exist_ok=True)
         
         uploaded_files = []
